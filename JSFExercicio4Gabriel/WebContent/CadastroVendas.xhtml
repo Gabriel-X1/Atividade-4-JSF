@@ -1,0 +1,56 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+<h:head>
+<title>Cadastro Vendas</title>
+</h:head>
+<h:body>
+  <h:form>
+  <h:commandLink value="Listar vendas" action="ListaVendas.xhtml" immediate="true"/>
+   <h:commandLink value="   Listar produtos" action="ListagemProdutos.xhtml" immediate="true"/>
+  <h1>Cadastro de vendas</h1>
+  <h:messages/>
+  <h:panelGrid columns="2">
+  
+  
+  <h:outputText value="Cliente: "/>
+  <h:inputText value="#{vendasControllerGabriel.vendas.cliente}"
+  required="true"
+  requiredMessage="O campo Cliente e obrigatorio">
+  <f:validateLength maximum="60"/>
+  </h:inputText>
+  
+  
+  <h:outputText value="Produto: "/>
+  <h:inputText value="#{vendasControllerGabriel.vendas.produto}"
+  required="true"
+  requiredMessage="O campo produto e obrigatorio">
+  <f:validateLength maximum="60"/>
+  </h:inputText>
+  
+  
+  <h:outputText value="Data da venda: "/>
+  <h:inputText value="#{vendasControllerGabriel.vendas.data}"
+  required="true"
+  requiredMessage="O campo Data da venda e obrigatorio">
+  <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+  </h:inputText>
+ 
+  <h:outputText value="Valor do produto: "/>
+  <h:inputText value="#{vendasControllerGabriel.vendas.valor}"
+  required="true"
+  requiredMessage="O campo Valor do produto e obrigatorio">
+  <f:validateDoubleRange minimum="1" maximum="800"/>
+  </h:inputText>
+  
+  <h:commandButton value="Salvar" action="#{vendasControllerGabriel.salvar}"/>
+  
+  
+  </h:panelGrid>
+  </h:form>
+</h:body>
+</html>

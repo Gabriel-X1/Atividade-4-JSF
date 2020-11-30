@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core">
+
+
+<h:head>
+   <title> Lista Empresas</title>
+</h:head>
+<h:body>
+   <h:form>
+   <h:commandLink value="Cadastro" action="CadastroEmpresas.xhtml" immediate="true"/>
+    <h1> Lista Empresas</h1>
+    <h:messages/>
+    
+    <h:dataTable border="1" value="#{empresasControllerGabriel.lista}" var="empresas">
+    <h:column>
+    <f:facet name="header">
+      <h:outputText value="ID"/>
+    </f:facet>
+    <h:outputText value="#{empresas.id}"/>
+    </h:column>
+    
+    <h:column>
+    <f:facet name="header">
+    <h:outputText value="Nome"/>
+    </f:facet>
+    <h:outputText value="#{empresas.nome}"/>
+    </h:column>
+    
+    <h:column>
+    <f:facet name="header">
+    <h:outputText value="CNPJ"/>
+    </f:facet>
+    <h:outputText value="#{empresas.cnpj}">
+    </h:outputText>
+    </h:column>
+    
+    <h:column>
+    <f:facet name="header">
+    <h:outputText value="Endereço"/>
+    </f:facet>
+    <h:outputText value="#{empresas.endereco}"/>
+    </h:column>
+    
+    
+    <h:column>
+    <f:facet name="header">
+    <h:outputText value="data de cadastro"/>
+    </f:facet>
+    <h:outputText value="#{empresas.datacadastro}">
+    <f:convertDateTime pattern="dd/MM/yyyy" timeZone="America/Sao_Paulo"/>
+    </h:outputText>
+    </h:column>
+   
+   
+    <h:column>
+    <f:facet name="header">
+    <h:outputText value="Ação"/>
+    </f:facet>
+    <h:commandButton value="Editar" action="#{empresasControllerGabriel.editar}">
+    <f:setPropertyActionListener 
+    value="#{empresas}" 
+    target="#{empresasControllerGabriel.empresas}"/>
+    </h:commandButton>
+    <h:commandButton value="Excluir" action="#{empresasControllerGabriel.Excluir}" onclick="return confirm ('Confirma a exclusao ?')">
+    <f:setPropertyActionListener 
+    value="#{empresas}"
+    target="#{empresasControllerGabriel.empresas}"/>
+    </h:commandButton>
+    </h:column>
+    
+    </h:dataTable>
+   </h:form>
+</h:body>
+</html>
+
